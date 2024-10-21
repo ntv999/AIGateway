@@ -16,7 +16,10 @@ const getWineDescription = async (req, res) => {
             name: req.body.name
         }
 
-        const result = await openAIService.makeAIRequest(wine);
+        var result = await openAIService.makeAIRequest(wine);
+        result.code = code;
+        result.brand = brand;
+        result.name = name;
         if (result) {
             res.status(200);
             res.send(result);
